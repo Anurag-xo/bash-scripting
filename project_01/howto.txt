@@ -1,0 +1,17 @@
+This will show how to make this projcet step by step
+
+Steps:
+1. Provide the path of directory
+
+2. Check if the directory is present or not
+
+3. Create 'archive' folder if not already present.
+
+4. Find all the files with size more than 20MB.
+
+5. Compress each file.
+
+6. Move the compressed files in 'archive' folder.
+
+7. Make a cron job to run the script every day at given time.
+
