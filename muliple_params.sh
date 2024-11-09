@@ -8,5 +8,5 @@ echo "Hello there" $2
 
 echo "Hello there" $@
 # $@ : all
+# WOW
 #
-
