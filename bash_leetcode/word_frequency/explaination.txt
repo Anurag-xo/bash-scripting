@@ -1,0 +1,22 @@
+This command pipeline processes the words.txt file to count the occurrences of each unique word in descending order. Here’s a breakdown of each part:
+
+cat words.txt
+This reads the contents of words.txt.
+
+tr -s ' ' '\n'
+This replaces all sequences of spaces with a newline (\n), effectively putting each word on its own line and removing extra spaces.
+
+sort
+This sorts the words alphabetically, which groups identical words together.
+
+uniq -c
+The uniq -c command counts occurrences of each unique line (or word, in this case, because each word is on a new line from tr -s and sort).
+
+sort -nr
+This sorts the output from uniq -c numerically (-n) and in reverse order (-r), so words with the highest count appear first.
+
+awk '{print $2, $1}'
+This rearranges the output to display the word first, followed by its count. Here:
+
+$2 is the word.
+$1 is the count.

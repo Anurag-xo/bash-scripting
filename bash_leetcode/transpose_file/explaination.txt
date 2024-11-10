@@ -1,0 +1,76 @@
+Let's break down this AWK script line by line:
+
+1. First part - Processing each line:
+```bash
+{
+    # Store number of rows
+    if (NR == 1) {
+        cols = NF
+    }
+```
+- NR is a built-in AWK variable that means "Number of Records" (current line number)
+- NF means "Number of Fields" in the current line
+- When processing first line (NR == 1), we store the number of columns (NF)
+
+2. Array storage part:
+```bash
+    # Store each element in a 2D array
+    for (i = 1; i <= NF; i++) {
+        matrix[i, NR] = $i
+    }
+    rows = NR
+```
+- For each field in the current line:
+  - i tracks the column number
+  - NR is the row number
+  - $i refers to the field value at position i
+  - matrix[i, NR] creates a 2D array where first index is column and second is row
+- rows = NR keeps track of total number of rows
+
+3. END block - Printing the transposed matrix:
+```bash
+END {
+    # Print transposed matrix
+    for (i = 1; i <= cols; i++) {
+        for (j = 1; j <= rows; j++) {
+            printf "%s", matrix[i,j]
+            if (j < rows) {
+                printf " "
+            }
+        }
+        printf "\n"
+    }
+}
+```
+- END block executes after all lines are processed
+- Outer loop (i) iterates through columns
+- Inner loop (j) iterates through rows
+- printf "%s", matrix[i,j] prints each element
+- if (j < rows) adds space between elements except last one
+- printf "\n" adds newline after each transposed row
+
+Example with input:
+```
+name age
+alice 21
+ryan 30
+```
+
+How the matrix is stored:
+```
+matrix[1,1] = "name"    matrix[2,1] = "age"
+matrix[1,2] = "alice"   matrix[2,2] = "21"
+matrix[1,3] = "ryan"    matrix[2,3] = "30"
+```
+
+When printed in transposed form:
+```
+name alice ryan
+age 21 30
+```
+
+This is efficient because:
+1. Processes file line by line
+2. Uses minimal memory (just storing the matrix)
+3. Handles any number of rows and columns
+4. Preserves data formatting
