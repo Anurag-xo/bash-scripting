@@ -15,4 +15,3 @@ done
 
 
 # The bash script will begin with a=1 & will move to inner loop and when it reaches b=5, it will break the outer loop. We can use break only instead of break 2, to break inner loop & see how it affects the output.
-#

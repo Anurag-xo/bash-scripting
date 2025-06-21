@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Enter the nume of your car brand: " car
+read -p "Enter the name of your car brand: " car
 
 case $car in
 	Tesla)
